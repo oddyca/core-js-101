@@ -43,8 +43,17 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  let result = 1;
+  function recurser(x) {
+    result *= x;
+    if (x - 1 > 0) {
+      const newX = x - 1;
+      recurser(newX);
+    }
+  }
+  recurser(n);
+  return result;
 }
 
 
