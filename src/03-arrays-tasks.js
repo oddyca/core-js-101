@@ -233,8 +233,15 @@ function toCsvText(/* arr */) {
  *   [ 0, 1, 2, 3, 4, 5 ] => [ 0, 1, 4, 9, 16, 25 ]
  *   [ 10, 100, -1 ]      => [ 100, 10000, 1 ]
  */
-function toArrayOfSquares(/* arr */) {
-  throw new Error('Not implemented');
+function toArrayOfSquares(arr) {
+  let copy = [...arr];
+  copy = copy.map((elem) => {
+    arr.shift();
+    const newElem = elem * elem;
+    return newElem;
+  });
+  arr.push(...copy);
+  return arr;
 }
 
 
@@ -252,8 +259,27 @@ function toArrayOfSquares(/* arr */) {
  *   [ 0, 0, 0, 0, 0]         => [ 0, 0, 0, 0, 0]
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
-function getMovingSum(/* arr */) {
-  throw new Error('Not implemented');
+function getMovingSum(arr) {
+  // throw new Error('Not implemented');
+  const copy = [...arr];
+  const result = [];
+  let prevResult;
+  let current;
+
+  copy.map((elem, id) => {
+    current = elem;
+    if (id === 0) {
+      result.push(current);
+      prevResult = current;
+    } else {
+      prevResult += current;
+      result.push(prevResult);
+    }
+    arr.shift();
+    return elem;
+  });
+  arr.push(...result);
+  return arr;
 }
 
 /**
