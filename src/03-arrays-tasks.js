@@ -218,8 +218,9 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  const concated = arr.map((array) => array.join(',')).join('\n');
+  return concated;
 }
 
 /**
@@ -293,8 +294,17 @@ function getMovingSum(arr) {
  * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
  * [ "a" ] => []
  */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+function getSecondItems(arr) {
+  const filtered = [];
+  arr.map((elem, id) => {
+    let ret;
+    if (id % 2 !== 0) {
+      ret = elem;
+      filtered.push(ret);
+    }
+    return elem;
+  });
+  return filtered;
 }
 
 
